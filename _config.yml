@@ -5,8 +5,8 @@ server: true # runs a local server
 paginate: 6 # pagination basted on number of posts
 exclude: ["Gemfile", "Gemfile.lock", "README.md", 'sass', 'watch.sh', 'style.scss'] # files to exclude
 baseurl: /
-url: htttp://betajippity.github.io
+url: http://philsresearch.github.io
 permalink: /:year/:month/:title.html
-author: Yining Karl Li
-authorurl: http://www.yiningkarlli.com
-name: Code &#38; Visuals
+author: Phillip Thomas
+authorurl: http://www.phillipthomas.work
+name: Phils Research Space
