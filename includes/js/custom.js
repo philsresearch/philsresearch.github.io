@@ -31,9 +31,9 @@ $(window).scroll(function(){
 		$('.blog-title').css("font-size","30px");
 		$('.blog-title').css("left","5px");
 		$('.blog-author').css("top","12px");
-		$('.blog-author').css("left","230px");
+		$('.blog-author').css("left","430px");
 		$('.blog-author').css("font-size","20px");	
-		$('.blog-author').css("position","relative");		
+		$('.blog-author').css("position","absolute");		
 		$('.blog-nav').css("top","12px");
 	}else{	
 		$('.blog-title-wrap').css("height","");
