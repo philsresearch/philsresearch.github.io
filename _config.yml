@@ -8,5 +8,5 @@ exclude: ["Gemfile", "Gemfile.lock", vendor/, "README.md", 'sass', 'watch.sh', '
 url: https://philsresearch.space
 permalink: /:year/:month/:title.html
 author: Phil
-authorurl: http://www.phillipthomas.work
+authorurl: https://www.phillipthomas.work
 name: Research Expositions
