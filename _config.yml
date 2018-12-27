@@ -7,6 +7,6 @@ exclude: ["Gemfile", "Gemfile.lock", "README.md", 'sass', 'watch.sh', 'style.scs
 baseurl: /
 url: http://philsresearch.github.io
 permalink: /:year/:month/:title.html
-author: Phillip Thomas
+author: Phil
 authorurl: http://www.phillipthomas.work
-name: Phils Research Space
+name: Rendering Research Expositions
