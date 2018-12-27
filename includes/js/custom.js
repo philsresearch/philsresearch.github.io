@@ -31,7 +31,7 @@ $(window).scroll(function(){
 		$('.blog-title').css("font-size","30px");
 		$('.blog-title').css("left","5px");
 		$('.blog-author').css("top","12px");
-		$('.blog-author').css("left","430px");
+		$('.blog-author').css("left","330px");
 		$('.blog-author').css("font-size","20px");	
 		$('.blog-author').css("position","absolute");		
 		$('.blog-nav').css("top","12px");
