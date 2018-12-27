@@ -406,10 +406,10 @@ a.nav:visited {
     color:white;
 }
 a.nav:hover {
-    color: blue;
+    color: royalblue;
 }
 a.nav:active {
-    color: blue;
+    color: royalblue;
 }
 
 /* Yo-logo. Yolo-go. Upload one in ghost/settings/ */
