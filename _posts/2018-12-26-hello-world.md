@@ -15,12 +15,6 @@ Hello World!
 
 Hello World!
 
-![gif test][subd2]
-
-https://dl.dropboxusercontent.com/s/m33zu8iwin05ya6/processing.gif
-
-[subd2]:https://dl.dropboxusercontent.com/s/m33zu8iwin05ya6/processing.gif "TEST"
-
 dfdsf
 
 How does this fit with workjdsfsdfsd fs fsgjfdksglkfd gfdjlkgjfdglkdfjgewiogjeg
