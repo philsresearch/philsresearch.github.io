@@ -46,11 +46,9 @@ fdkgjregoirewjgfdikgjfdlg gflkdgfdjgkejglkrwjglrekgjrwl  jfgfdjg fdkl gjlfdjg kj
 dkfgjlkfgjf kj lj lkfdjg lkd j kj dlkd jlfdk jg
 <gif-player 
 	src="https://dl.dropboxusercontent.com/s/vdzwg2ky0iobp8u/output.gif" 
-	frame="0" 
 	style="width: 540px; height: 460px; display: block; float: left; margin: 10px;" 
 	size="contain" 
 	speed="1" 
-	prerender
 ></gif-player>
 How does this fit with workjdsfsdfsd fs fsgjfdksglkfd gfdjlkgjfdglkdfjgewiogjeg
 dfkjgfdsgewelkfg fdkjgfdlkgjfdgtwoer gfkjgwekfjgldsfjglkdfj fdgjlkdggjwrlkg lfdkjgg
