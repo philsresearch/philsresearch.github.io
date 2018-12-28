@@ -48,7 +48,6 @@ dkfgjlkfgjf kj lj lkfdjg lkd j kj dlkd jlfdk jg
 	src="https://dl.dropboxusercontent.com/s/vdzwg2ky0iobp8u/output.gif" 
 	style="width: 540px; height: 460px; display: block; float: left; margin: 10px;" 
 	size="cover" 
-	speed="1" 
 ></gif-player>
 How does this fit with workjdsfsdfsd fs fsgjfdksglkfd gfdjlkgjfdglkdfjgewiogjeg
 dfkjgfdsgewelkfg fdkjgfdlkgjfdgtwoer gfkjgwekfjgldsfjglkdfj fdgjlkdggjwrlkg lfdkjgg
