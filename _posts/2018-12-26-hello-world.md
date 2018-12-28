@@ -22,7 +22,7 @@ dfkjgfdsgewelkfg fdkjgfdlkgjfdgtwoer gfkjgwekfjgldsfjglkdfj fdgjlkdggjwrlkg lfdk
 fdkgjregoirewjgfdikgjfdlg gflkdgfdjgkejglkrwjglrekgjrwl  jfgfdjg fdkl gjlfdjg kj 
  dkfgjlkfgjf kj lj lkfdjg lkd j kj dlkd jlfdk jg
 
-<img align="right" width="240" height="180" border="10" src="https://dl.dropboxusercontent.com/s/vdzwg2ky0iobp8u/output.gif">
+<img align="right" width="340" height="280" border="10" src="https://dl.dropboxusercontent.com/s/vdzwg2ky0iobp8u/output.gif">
 How does this fit with workjdsfsdfsd fs fsgjfdksglkfd gfdjlkgjfdglkdfjgewiogjeg
 dfkjgfdsgewelkfg fdkjgfdlkgjfdgtwoer gfkjgwekfjgldsfjglkdfj fdgjlkdggjwrlkg lfdkjgg
 fdkgjregoirewjgfdikgjfdlg gflkdgfdjgkejglkrwjglrekgjrwl  jfgfdjg fdkl gjlfdjg kj 
@@ -46,7 +46,6 @@ fdkgjregoirewjgfdikgjfdlg gflkdgfdjgkejglkrwjglrekgjrwl  jfgfdjg fdkl gjlfdjg kj
 dkfgjlkfgjf kj lj lkfdjg lkd j kj dlkd jlfdk jg
 <gif-player 
 	src="https://dl.dropboxusercontent.com/s/vdzwg2ky0iobp8u/output.gif" 
-	frame="0"
 	style="width: 540px; height: 460px; display: block; float: left; margin: 10px;" 
 	size="cover" 
 	prerender
