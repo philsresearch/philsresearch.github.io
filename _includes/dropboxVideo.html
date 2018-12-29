@@ -39,6 +39,12 @@ window.onload = function() {
 		targetscrollpos = video.duration * (event.offsetX/{{ include.w }});
 	});
 
+	video.addEventListener('touchmove', function(event) {
+		// Calculate the slider value
+		targetscrollpos = video.duration * 
+			((event.touches[0].pageX - event.touches[0].target.offsetLeft)/{{ include.w }});
+	});
+
 }
 
 window.setInterval(function(){  
