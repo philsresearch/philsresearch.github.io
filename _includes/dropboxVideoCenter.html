@@ -1,0 +1,54 @@
+<div style="
+	float: none;
+    color: #666666;
+	max-width: {{ include.w }}px;
+    text-align: center;
+    display: block;
+    margin: 5px auto 20px;
+    font-size: 1.35rem;
+		">
+		<!-- Video -->
+	<video id="video" tabindex="0" autobuffer preload>
+		<source type="video/mp4" src="https://dl.dropboxusercontent.com/s/{{ include.fileid }}"></source>
+	</video>
+	{{ include.caption }}
+</div>
+
+<script>
+var video = document.getElementById("video");
+var scrollpos = {{ include.start }};
+var targetscrollpos = scrollpos;
+var accel = 0;
+
+
+var accelamount = 0.2; 
+
+video.pause();
+
+
+video.addEventListener( "loadedmetadata", function (e) {
+	var inv_asp_ratio = this.videoHeight/this.videoWidth;
+	this.width = {{include.w}},
+	this.height = {{ include.w }}*inv_asp_ratio;
+}, false );
+
+window.onload = function() {
+
+	video.addEventListener('mousemove', function(event) {
+		// Calculate the slider value
+		targetscrollpos = video.duration * (event.offsetX/{{ include.w }});
+	});
+
+}
+
+window.setInterval(function(){  
+        
+      //Accelerate towards the target:
+      scrollpos += (targetscrollpos - scrollpos)*accelamount;
+  
+      //update video playback
+      video.currentTime = scrollpos;
+      video.pause();
+    
+}, 80);
+</script>
