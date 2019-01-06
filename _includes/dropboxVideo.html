@@ -7,10 +7,26 @@
     margin: 5px 20px 20px;
     font-size: 1.35rem;
 		">
+
+	<div>
+ <div style = " 
+ position:relative;
+  top: 0px;
+  left: 0px;
+  z-index: 2;
+width: 10px;
+  height: 5px;
+border-bottom-left-radius:10px;
+  border-bottom-right-radius: 10px;
+  background-color: rgba(0,0,0,0.0);
+	 " id="time"></div>
 		<!-- Video -->
+    <div>
 	<video id="video" tabindex="0" disableRemotePlayback autobuffer preload>
 		<source type="video/mp4" src="https://dl.dropboxusercontent.com/s/{{ include.fileid }}"></source>
 	</video>
+</div>
+</div>
 	{{ include.caption }}
 </div>
 
@@ -19,18 +35,30 @@ var video = document.getElementById("video");
 var scrollpos = {{ include.start }};
 var targetscrollpos = scrollpos;
 var accel = 0;
-var paused = false;
+var paused = true;
+var fraction = 0;
+var hover = false;
+var moving = false;
+
+var time = document.getElementById("time");
+
 
 
 var accelamount = 0.2; 
 
 video.pause();
 
+function visible()
+{
+		time.style.backgroundColor = coral;
+}
+
 
 video.addEventListener( "loadedmetadata", function (e) {
 	var inv_asp_ratio = this.videoHeight/this.videoWidth;
 	this.width = {{include.w}},
 	this.height = {{ include.w }}*inv_asp_ratio;
+	time.style.top = this.height + 5 + 'px';
 }, false );
 
 window.onload = function() {
@@ -44,7 +72,19 @@ window.onload = function() {
 
 	video.addEventListener('click', function(event) {
 		paused = !paused;
+		targetscrollpos = video.duration * (event.offsetX/{{ include.w }});
+	});
 
+	video.addEventListener('mouseenter', function(event) {
+		time.style.backgroundColor ="rgba(0, 0, 0, 0.4)";
+		hover = true;
+	});
+
+	video.addEventListener('mouseout', function(event) {
+		if (!moving) {
+		time.style.backgroundColor ="rgba(0, 0, 0, 0.0)";
+		}
+		hover = false;
 	});
 
 	video.addEventListener('touchmove', function(event) {
@@ -67,9 +107,19 @@ window.setInterval(function(){
         
       //Accelerate towards the target:
       scrollpos += (targetscrollpos - scrollpos)*accelamount;
+	moving = (Math.abs((targetscrollpos- scrollpos)/video.duration) > 0.001);
+	if (moving) {
+	  time.style.backgroundColor ="rgba(0, 0, 0, 0.4)";
+	}
+	else {
+		if (hover==false) {
+	  time.style.backgroundColor ="rgba(0, 0, 0, 0.0)";
+		}
+	}
   
       //update video playback
       video.currentTime = scrollpos;
+	  time.style.left = -5 + video.width * (scrollpos / video.duration) + 'px';
       video.pause();
     
 }, 80);
