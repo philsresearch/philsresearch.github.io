@@ -19,6 +19,7 @@ var video = document.getElementById("video");
 var scrollpos = {{ include.start }};
 var targetscrollpos = scrollpos;
 var accel = 0;
+var paused = false;
 
 
 var accelamount = 0.2; 
@@ -36,13 +37,28 @@ window.onload = function() {
 
 	video.addEventListener('mousemove', function(event) {
 		// Calculate the slider value
+		if (!paused) {
 		targetscrollpos = video.duration * (event.offsetX/{{ include.w }});
+		}
+	});
+
+	video.addEventListener('click', function(event) {
+		paused = !paused;
+
 	});
 
 	video.addEventListener('touchmove', function(event) {
 		// Calculate the slider value
+		if (!paused) {
 		targetscrollpos = video.duration * 
 			((event.touches[0].pageX - event.touches[0].target.offsetLeft)/{{ include.w }});
+		}
+	});
+
+	video.addEventListener('touchstart', function(event) {
+		if (event.touches.length > 1) {
+			paused = !paused;
+		}
 	});
 
 }
