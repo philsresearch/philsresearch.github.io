@@ -19,6 +19,8 @@ width: 10px;
 border-bottom-left-radius:10px;
   border-bottom-right-radius: 10px;
   background-color: rgba(0,0,0,0.0);
+  @media (max-width: 000) {
+	display: none;}
 	 " id="time"></div>
 		<!-- Video -->
     <div>
@@ -62,6 +64,10 @@ video.addEventListener( "loadedmetadata", function (e) {
 }, false );
 
 window.onload = function() {
+
+	if (typeof window.orientation != 'undefined') {  
+		time.style.display = "none";
+	}
 
 	video.addEventListener('mousemove', function(event) {
 		// Calculate the slider value
@@ -119,8 +125,10 @@ window.setInterval(function(){
   
       //update video playback
       video.currentTime = scrollpos;
-	  time.style.left = -5 + video.width * (scrollpos / video.duration) + 'px';
+	  time.style.left = 100*(scrollpos / video.duration) + '%';
       video.pause();
     
 }, 80);
+
+
 </script>
