@@ -1,121 +1,27 @@
 <div style="
-	float: {{ include.pos }};
+	float: left;
     color: #666666;
-	max-width: {{ include.w }}px;
+	max-width: 10000px;
     text-align: center;
     display: block;
     margin: 5px 20px 20px;
     font-size: 1.35rem;
-		">
-<div>
+		" id = "surround{{include.fileid}}">
  <div style = " 
  position:relative;
   top: 0px;
   left: 0px;
   z-index: 2;
-width: 10px;
+width: 5px;
   height: 5px;
-border-bottom-left-radius:10px;
-  border-bottom-right-radius: 10px;
+border-radius:5px;
   background-color: rgba(0,0,0,0.0);
-	 " id="time"></div>
+  " id="time{{include.fileid}}"></div>
 		<!-- Video -->
     <div>
-	<video id="video" tabindex="0" disableRemotePlayback autobuffer preload>
+	<video style="border-bottom: 1px solid rgba(0,0,0,0.0);" id="video{{include.fileid}}" tabindex="0" disableRemotePlayback autobuffer preload>
 		<source type="video/mp4" src="https://dl.dropboxusercontent.com/s/{{ include.fileid }}"></source>
 	</video>
 </div>
-</div>
 	{{ include.caption }}
 </div>
-
-<script>
-var video = document.getElementById("video");
-var scrollpos = {{ include.start }};
-var targetscrollpos = scrollpos;
-var frozen = true;
-var fraction = 0;
-var hover = false;
-var moving = false;
-
-var time = document.getElementById("time");
-
-
-
-var accelamount = 0.2; 
-
-video.pause();
-
-video.addEventListener( "loadedmetadata", function (e) {
-	var inv_asp_ratio = this.videoHeight/this.videoWidth;
-	this.width = {{include.w}},
-	this.height = {{ include.w }}*inv_asp_ratio;
-	time.style.top = this.height + 5 + 'px';
-}, false );
-
-window.onload = function() {
-
-	video.addEventListener('mousemove', function(event) {
-		// Calculate the slider value
-		if (!frozen) {
-		targetscrollpos = video.duration * (event.offsetX/{{ include.w }});
-		}
-	});
-
-	video.addEventListener('click', function(event) {
-		frozen = !frozen;
-		targetscrollpos = video.duration * (event.offsetX/{{ include.w }});
-	});
-
-	video.addEventListener('mouseenter', function(event) {
-		time.style.backgroundColor ="rgba(0, 0, 0, 0.4)";
-		hover = true;
-	});
-
-	video.addEventListener('mouseout', function(event) {
-		if (!moving) {
-		time.style.backgroundColor ="rgba(0, 0, 0, 0.0)";
-		}
-		hover = false;
-	});
-
-	video.addEventListener('touchmove', function(event) {
-		// Calculate the slider value
-		if (!frozen) {
-		targetscrollpos = video.duration * 
-			((event.touches[0].pageX - event.touches[0].target.offsetLeft)/{{ include.w }});
-		}
-	});
-
-	video.addEventListener('touchstart', function(event) {
-		time.style.display = "none";
-		if (event.touches.length > 1) {
-			frozen = !frozen;
-		}
-	});
-
-}
-
-window.setInterval(function(){  
-        
-      //Accelerate towards the target:
-      scrollpos += (targetscrollpos - scrollpos)*accelamount;
-	moving = (Math.abs((targetscrollpos- scrollpos)/video.duration) > 0.001);
-	if (moving) {
-	  time.style.backgroundColor ="rgba(0, 0, 0, 0.4)";
-	}
-	else {
-		if (hover==false) {
-	  time.style.backgroundColor ="rgba(0, 0, 0, 0.0)";
-		}
-	}
-  
-      //update video playback
-      video.currentTime = scrollpos;
-	  time.style.left = -5 + (video.width *(scrollpos / video.duration)) + 'px';
-      video.pause();
-    
-}, 80);
-
-
-</script>

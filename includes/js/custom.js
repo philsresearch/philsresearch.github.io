@@ -58,3 +58,62 @@ $(document).ready(function() {
 				.after('<div class="figcaption">'+$(this).attr("alt")+'</div>');
 		});
 });
+
+
+window.onload = function() {
+	var v_length = this.video_players.length;
+	for (var i = 0; i < v_length; i++) {
+		this.video_players[i].video.addEventListener('mousemove', function(event) {
+			// Calculate the slider value
+			if (!this.frozen) {
+			this.targetseek_pos = this.video.duration * (event.offsetX/this.width);
+			}
+		}.bind(this.video_players[i]) );
+
+		this.video_players[i].video.addEventListener('click', function(event) {
+			this.frozen = !this.frozen;
+			this.targetseek_pos = this.video.duration * (event.offsetX/this.width);
+		}.bind(this.video_players[i]));
+
+		this.video_players[i].video.addEventListener('mouseenter', function(event) {
+			trigger_animation_switch(this);
+			this.time.style.backgroundColor ="rgba(0, 0, 0, 0.4)";
+			this.video.style.borderBottomColor ="rgba(0, 0, 0, 0.1)";
+			this.hover = true;
+		}.bind(this.video_players[i]));
+
+		this.video_players[i].video.addEventListener('mouseout', function(event) {
+			if (!this.moving) {
+			this.time.style.backgroundColor ="rgba(0, 0, 0, 0.0)";
+			this.video.style.borderBottomColor ="rgba(0, 0, 0, 0.0)";
+			}
+			this.hover = false;
+		}.bind(this.video_players[i]));
+
+		this.video_players[i].video.addEventListener('touchmove', function(event) {
+			// Calculate the slider value
+			if (!this.frozen) {
+			this.targetseek_pos = this.duration * 
+				((event.touches[0].pageX - event.touches[0].target.offsetLeft)/this.width);
+			}
+		}.bind(this.video_players[i]),{passive: true});
+
+		this.video_players[i].video.addEventListener('touchstart', function(event) {
+			this.time.style.display = "none";
+			if (event.touches.length > 1) {
+				this.frozen = !this.frozen;
+			}
+		}.bind(this.video_players[i]),{passive: true});
+		
+	}
+}.bind(video_players)
+
+
+var trigger_animation_switch = function(player) {
+	var v_length = this.video_players.length;
+	for (var i = 0; i < v_length; i++) {
+		this.video_players[i].stop_animation()
+	}
+	player.start_animation();
+	
+}.bind(video_players)
