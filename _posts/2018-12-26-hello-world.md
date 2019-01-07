@@ -48,7 +48,7 @@ dkfgjlkfgjf kj lj lkfdjg lkd j kj dlkd jlfdk jg
 
 
 
-{% include dropboxVideotest.html 
+{% include dropboxVideo.html 
   fileid="uks5l2y5u7ml25o/wwww.mp4"
   w="600" 
   caption="Figure 2: what is this" 
