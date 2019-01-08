@@ -14,6 +14,7 @@ class  DropboxVideo{
 	  this.float_off = 0;
 		this.touch_time = new Date();
 		this.touch_seek= 0;
+		this.mobile = false;
 		this.float_pos = float_pos;
 	this.seek_pos = start;
 	this.targetseek_pos = start;
@@ -34,6 +35,7 @@ class  DropboxVideo{
 			this.video.width = this.width,
 			this.video.height = this.width*inv_asp_ratio;
 			this.time.style.top = this.video.height + 3 + 'px';
+			this.time.style.left = (this.float_off) -2 + (this.video.width *(this.seek_pos / this.video.duration)) + 'px';
 			  this.video.currentTime = this.seek_pos;
 		}.bind(this), false );
 

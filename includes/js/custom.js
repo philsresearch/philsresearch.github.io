@@ -64,14 +64,16 @@ window.onload = function() {
 	var v_length = this.video_players.length;
 	for (var i = 0; i < v_length; i++) {
 		this.video_players[i].video.addEventListener('mousemove', function(event) {
-			if (!this.frozen) {
-			// this.targetseek_pos = this.video.duration * (event.offsetX/this.width);
+			if (!this.frozen && !this.mobile) {
+			this.targetseek_pos = this.video.duration * (event.offsetX/this.width);
 			}
 		}.bind(this.video_players[i]) );
 
 		this.video_players[i].video.addEventListener('click', function(event) {
-			// this.frozen = !this.frozen;
-			// this.targetseek_pos = this.video.duration * (event.offsetX/this.width);
+			if (!this.mobile) {
+			this.frozen = !this.frozen;
+			this.targetseek_pos = this.video.duration * (event.offsetX/this.width);
+			}
 		}.bind(this.video_players[i]));
 
 		this.video_players[i].video.addEventListener('mouseenter', function(event) {
@@ -102,9 +104,10 @@ window.onload = function() {
 				((event.touches[0].pageX - ((window.innerWidth/2)-(this.width/2)))/this.width);
 				}
 			}
-		}.bind(this.video_players[i]));
+		}.bind(this.video_players[i]), {passive: true});
 
 		this.video_players[i].video.addEventListener('touchstart', function(event) {
+			this.mobile=true;
 			this.time.style.backgroundColor ="rgba(0, 0, 0, 0.4)";
 			this.video.style.borderBottomColor ="rgba(0, 0, 0, 0.1)";
 			this.hover = true;
@@ -118,7 +121,7 @@ window.onload = function() {
 				((event.touches[0].pageX - ((window.innerWidth/2)-(this.width/2)))/this.width);
 				}
 			this.touch_time = new Date();
-		}.bind(this.video_players[i]));
+		}.bind(this.video_players[i]), {passive: true});
 
 		this.video_players[i].video.addEventListener('touchend', function(event) {
 			if (!this.moving) {
@@ -131,7 +134,7 @@ window.onload = function() {
 				this.targetseek_pos = this.touch_seek;
 			}
 			this.hover = false;
-		}.bind(this.video_players[i]) );
+		}.bind(this.video_players[i]) , {passive: true});
 		
 	}
 }.bind(video_players)
