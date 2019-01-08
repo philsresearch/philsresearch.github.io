@@ -12,6 +12,7 @@ class  DropboxVideo{
     this.start = start;
     this.width = width;
 	  this.float_off = 0;
+		this.touch_time = new Date();
     this.float_pos = float_pos;
 	this.seek_pos = start;
 	this.targetseek_pos = start;
