@@ -57,7 +57,7 @@ dkfgjlkfgjf kj lj lkfdjg lkd j kj dlkd jlfdk jg
 %}
 
 <script>
-test = new DropboxVideo("uks5l2y5u7ml25o/wwww.mp4", 2, 600);
+test = new DropboxVideo(fileid = "uks5l2y5u7ml25o/wwww.mp4", start=2, width=600, pos="left");
 video_players.video_players.push(test);
 </script>
 

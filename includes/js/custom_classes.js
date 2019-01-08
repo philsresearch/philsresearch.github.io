@@ -13,7 +13,8 @@ class  DropboxVideo{
     this.width = width;
 	  this.float_off = 0;
 		this.touch_time = new Date();
-    this.float_pos = float_pos;
+		this.touch_seek= 0;
+		this.float_pos = float_pos;
 	this.seek_pos = start;
 	this.targetseek_pos = start;
 	this.frozen = true;
@@ -27,7 +28,7 @@ class  DropboxVideo{
 		this.time = document.getElementById("time"+ this.fileid);
 		this.video = document.getElementById("video"+this.fileid);
 		this.video.pause();
-
+		this.rect = this.video.getBoundingClientRect(); 
 		this.video.addEventListener( "loadedmetadata", function (e) {
 			var inv_asp_ratio = this.video.videoHeight/this.video.videoWidth;
 			this.video.width = this.width,

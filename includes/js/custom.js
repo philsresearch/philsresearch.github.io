@@ -64,7 +64,6 @@ window.onload = function() {
 	var v_length = this.video_players.length;
 	for (var i = 0; i < v_length; i++) {
 		this.video_players[i].video.addEventListener('mousemove', function(event) {
-			// Calculate the slider value
 			if (!this.frozen) {
 			this.targetseek_pos = this.video.duration * (event.offsetX/this.width);
 			}
@@ -93,28 +92,42 @@ window.onload = function() {
 		this.video_players[i].video.addEventListener('touchmove', function(event) {
 			// Calculate the slider value
 			if (!this.frozen) {
+				if (this.float_off == 0) {
+					console.log("gere");
 			this.targetseek_pos = this.video.duration * 
-				((event.touches[0].pageX - event.touches[0].target.offsetLeft)/this.width);
+				((event.touches[0].pageX - this.rect.left)/this.width);
+			}
+				else {
+			this.targetseek_pos = this.video.duration * 
+				((event.touches[0].pageX - ((window.innerWidth/2)-(this.width/2)))/this.width);
+				}
 			}
 		}.bind(this.video_players[i]), {passive: true});
 
 		this.video_players[i].video.addEventListener('touchstart', function(event) {
-			this.time.style.display = "none";
+			this.time.style.backgroundColor ="rgba(0, 0, 0, 0.4)";
 			this.video.style.borderBottomColor ="rgba(0, 0, 0, 0.1)";
 			this.hover = true;
+				if (this.float_off == 0) {
+					console.log("here");
+			this.touch_seek = this.video.duration * 
+				((event.touches[0].pageX - this.rect.left)/this.width);
+			}
+				else {
+			this.touch_seek = this.video.duration * 
+				((event.touches[0].pageX - ((window.innerWidth/2)-(this.width/2)))/this.width);
+				}
 			this.touch_time = new Date();
 		}.bind(this.video_players[i]), {passive: true});
 
 		this.video_players[i].video.addEventListener('touchend', function(event) {
 			if (!this.moving) {
+			this.time.style.backgroundColor ="rgba(0, 0, 0, 0.0)";
 			this.video.style.borderBottomColor ="rgba(0, 0, 0, 0.0)";
 			}
-			if (!this.frozen) {
-			this.targetseek_pos = this.video.duration * 
-				((event.touches[0].pageX - event.touches[0].target.offsetLeft)/this.width);
-			}
-			if ((new Data() - this.touch_time) < 200) {
+			if ((new Date() - this.touch_time) < 200) {
 				this.frozen = !this.frozen;
+				this.targetseek_pos = this.touch_seek;
 			}
 			this.hover = false;
 		}.bind(this.video_players[i]), {passive: true});
