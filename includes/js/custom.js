@@ -102,7 +102,7 @@ window.onload = function() {
 				((event.touches[0].pageX - ((window.innerWidth/2)-(this.width/2)))/this.width);
 				}
 			}
-		}.bind(this.video_players[i]), {passive: true});
+		}.bind(this.video_players[i]));
 
 		this.video_players[i].video.addEventListener('touchstart', function(event) {
 			this.time.style.backgroundColor ="rgba(0, 0, 0, 0.4)";
@@ -118,7 +118,7 @@ window.onload = function() {
 				((event.touches[0].pageX - ((window.innerWidth/2)-(this.width/2)))/this.width);
 				}
 			this.touch_time = new Date();
-		}.bind(this.video_players[i]), {passive: true});
+		}.bind(this.video_players[i]));
 
 		this.video_players[i].video.addEventListener('touchend', function(event) {
 			if (!this.moving) {
@@ -126,11 +126,12 @@ window.onload = function() {
 			this.video.style.borderBottomColor ="rgba(0, 0, 0, 0.0)";
 			}
 			if ((new Date() - this.touch_time) < 200) {
+					console.log("here tap");
 				this.frozen = !this.frozen;
 				this.targetseek_pos = this.touch_seek;
 			}
 			this.hover = false;
-		}.bind(this.video_players[i]), {passive: true});
+		}.bind(this.video_players[i]) );
 		
 	}
 }.bind(video_players)
