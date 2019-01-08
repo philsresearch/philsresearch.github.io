@@ -65,13 +65,13 @@ window.onload = function() {
 	for (var i = 0; i < v_length; i++) {
 		this.video_players[i].video.addEventListener('mousemove', function(event) {
 			if (!this.frozen) {
-			this.targetseek_pos = this.video.duration * (event.offsetX/this.width);
+			// this.targetseek_pos = this.video.duration * (event.offsetX/this.width);
 			}
 		}.bind(this.video_players[i]) );
 
 		this.video_players[i].video.addEventListener('click', function(event) {
-			this.frozen = !this.frozen;
-			this.targetseek_pos = this.video.duration * (event.offsetX/this.width);
+			// this.frozen = !this.frozen;
+			// this.targetseek_pos = this.video.duration * (event.offsetX/this.width);
 		}.bind(this.video_players[i]));
 
 		this.video_players[i].video.addEventListener('mouseenter', function(event) {
