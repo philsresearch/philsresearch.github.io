@@ -95,13 +95,14 @@ window.onload = function() {
 			// Calculate the slider value
 			if (!this.frozen) {
 				if (this.float_off == 0) {
-					console.log("gere");
+					frac = ((event.touches[0].pageX - this.rect.left)/this.width);
 			this.targetseek_pos = this.video.duration * 
-				((event.touches[0].pageX - this.rect.left)/this.width);
+						Math.max(0,Math.min(1,frac));
 			}
 				else {
+			var frac = ((event.touches[0].pageX - ((window.innerWidth/2)-(this.width/2)))/this.width);
 			this.targetseek_pos = this.video.duration * 
-				((event.touches[0].pageX - ((window.innerWidth/2)-(this.width/2)))/this.width);
+						Math.max(0,Math.min(1,frac));
 				}
 			}
 		}.bind(this.video_players[i]), {passive: true});
@@ -112,13 +113,14 @@ window.onload = function() {
 			this.video.style.borderBottomColor ="rgba(0, 0, 0, 0.1)";
 			this.hover = true;
 				if (this.float_off == 0) {
-					console.log("here");
+					frac = ((event.touches[0].pageX - this.rect.left)/this.width);
 			this.touch_seek = this.video.duration * 
-				((event.touches[0].pageX - this.rect.left)/this.width);
+						Math.max(0,Math.min(1,frac));
 			}
 				else {
+			var frac = ((event.touches[0].pageX - ((window.innerWidth/2)-(this.width/2)))/this.width);
 			this.touch_seek = this.video.duration * 
-				((event.touches[0].pageX - ((window.innerWidth/2)-(this.width/2)))/this.width);
+						Math.max(0,Math.min(1,frac));
 				}
 			this.touch_time = new Date();
 		}.bind(this.video_players[i]), {passive: true});
