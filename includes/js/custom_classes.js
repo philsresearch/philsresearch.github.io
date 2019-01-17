@@ -54,7 +54,7 @@ class  DropboxVideo{
 			this.surround_div.style.maxWidth = this.width;
 			this.surround_div.style.margin = "5px auto 20px";
 			this.time.style.margin = "0px auto 0px";
-			this.float_off = -this.width/2;
+			this.float_off = -this.width/2 +2;
 	  }
 	}
 
