@@ -10,11 +10,11 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 <!-- VIDEO -->
 {% include dropboxVideo.html 
-  fileid="1csuyjf0oo6yn1o/countdown.mp4"
+  fileid="2rrqlrbtildzqwh/countdown_timer.mp4"
   caption="Figure 1: Countdown" 
 %}
 <script>
-test1 = new DropboxVideo(fileid="1csuyjf0oo6yn1o/countdown.mp4",
+test1 = new DropboxVideo(fileid="2rrqlrbtildzqwh/countdown_timer.mp4",
 start=0, width=600, pos="center");
 video_players.video_players.push(test1);
 </script>
@@ -28,12 +28,12 @@ Pulvinar mattis nunc sed blandit. Urna cursus eget nunc scelerisque viverra maur
 Commodo sed egestas egestas fringilla phasellus faucibus scelerisque eleifend. Congue quisque egestas diam in. Arcu ac tortor dignissim convallis aenean et tortor at. Nullam ac tortor vitae purus faucibus ornare suspendisse sed. Massa tincidunt nunc pulvinar sapien et ligula ullamcorper. Scelerisque varius morbi enim nunc faucibus a pellentesque sit. Gravida in fermentum et sollicitudin ac orci phasellus egestas tellus. Velit sed ullamcorper morbi tincidunt ornare. Eleifend donec pretium vulputate sapien. Vitae justo eget magna fermentum iaculis eu. Urna id volutpat lacus laoreet non curabitur gravida. Aliquam sem et tortor consequat id porta. Tellus molestie nunc non blandit massa enim nec dui.
 
 {% include dropboxVideo.html 
-  fileid="2euupivqkh1jeb4/earth_zoom.mp4"
+  fileid="s9p9a4p6tp6k9um/earth_zoom_in.mp4"
   caption="Figure 2: Earth" 
 %}
 
 <script>
-test = new DropboxVideo(fileid = "2euupivqkh1jeb4/earth_zoom.mp4", start=2, width=600, pos="left");
+test = new DropboxVideo(fileid = "s9p9a4p6tp6k9um/earth_zoom_in.mp4", start=2, width=600, pos="left");
 video_players.video_players.push(test);
 </script>
 
@@ -47,12 +47,12 @@ Lectus sit amet est placerat in egestas erat imperdiet sed. Commodo elit at impe
 
 
 {% include dropboxVideo.html 
-  fileid="trdion4u47roryp/code_flythrough.mp4"
+  fileid="alrmsvaxp761k3b/code_flythrough.mp4"
   caption="Figure 3: Code" 
 %}
 
 <script>
-test2 = new DropboxVideo(fileid = "trdion4u47roryp/code_flythrough.mp4", start=7, width=600, pos="right");
+test2 = new DropboxVideo(fileid = "alrmsvaxp761k3b/code_flythrough.mp4", start=7, width=600, pos="right");
 video_players.video_players.push(test2);
 </script>
 
