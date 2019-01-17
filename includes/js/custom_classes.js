@@ -23,6 +23,7 @@ class  DropboxVideo{
 	this.moving = false;
 	this.accelamount = 0.3; 
 	this.load_params();
+	  this.postOffset =document.querySelector('.post').offsetLeft + 20; 
   }
 	load_params () {
 		this.surround_div = document.getElementById("surround"+ this.fileid);

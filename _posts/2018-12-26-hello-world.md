@@ -52,7 +52,7 @@ Lectus sit amet est placerat in egestas erat imperdiet sed. Commodo elit at impe
 %}
 
 <script>
-test2 = new DropboxVideo(fileid = "alrmsvaxp761k3b/code_flythrough.mp4", start=7, width=600, pos="right");
+test2 = new DropboxVideo(fileid = "alrmsvaxp761k3b/code_flythrough.mp4", start=0, width=600, pos="right");
 video_players.video_players.push(test2);
 </script>
 

@@ -60,6 +60,7 @@ $(document).ready(function() {
 });
 
 
+
 window.onload = function() {
 	var v_length = this.video_players.length;
 	for (var i = 0; i < v_length; i++) {
@@ -94,13 +95,20 @@ window.onload = function() {
 		this.video_players[i].video.addEventListener('touchmove', function(event) {
 			// Calculate the slider value
 			if (!this.frozen) {
-				if (this.float_off == 0) {
+				if (this.float_pos == "left") {
+					console.log("wish")
 					frac = ((event.touches[0].pageX - this.rect.left)/this.width);
 			this.targetseek_pos = this.video.duration * 
 						Math.max(0,Math.min(1,frac));
 			}
-				else {
+				else if (this.float_pos == "center") {
 			var frac = ((event.touches[0].pageX - ((window.innerWidth/2)-(this.width/2)))/this.width);
+			this.targetseek_pos = this.video.duration * 
+						Math.max(0,Math.min(1,frac));
+				}
+				else if (this.float_pos == "right") {
+			var frac = ((event.touches[0].pageX 
+						- ((window.innerWidth-(document.querySelector('.post').offsetLeft + 20))-(this.width)))/this.width);
 			this.targetseek_pos = this.video.duration * 
 						Math.max(0,Math.min(1,frac));
 				}
@@ -112,13 +120,19 @@ window.onload = function() {
 			this.time.style.backgroundColor ="rgba(0, 0, 0, 0.4)";
 			this.video.style.borderBottomColor ="rgba(0, 0, 0, 0.1)";
 			this.hover = true;
-				if (this.float_off == 0) {
+				if (this.float_pos == "left") {
 					frac = ((event.touches[0].pageX - this.rect.left)/this.width);
 			this.touch_seek = this.video.duration * 
 						Math.max(0,Math.min(1,frac));
 			}
-				else {
+				else if (this.float_pos == "center") {
 			var frac = ((event.touches[0].pageX - ((window.innerWidth/2)-(this.width/2)))/this.width);
+			this.touch_seek = this.video.duration * 
+						Math.max(0,Math.min(1,frac));
+				}
+				else if (this.float_pos == "right") {
+			var frac = ((event.touches[0].pageX 
+						- ((window.innerWidth-(document.querySelector('.post').offsetLeft + 20))-(this.width)))/this.width);
 			this.touch_seek = this.video.duration * 
 						Math.max(0,Math.min(1,frac));
 				}
