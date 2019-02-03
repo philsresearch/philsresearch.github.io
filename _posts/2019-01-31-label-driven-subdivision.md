@@ -95,6 +95,16 @@ More precisely, for Catmull-Clark subdivision:
 
 $$ \text{face_count_final} = \text{face_count_initial} \times 4^{lvl}.$$
 
+<!-- FIGURE 4 -->
+{% include dropboxVideo.html 
+  fileid="8mjrvapyjdrury7/reposition.mp4"
+  caption="Figure 4: Catmull-Clark vertex position calculations."
+%}
+<script>
+positions = new DropboxVideo(fileid="8mjrvapyjdrury7/reposition.mp4", start=0, width=410, pos="right");
+video_players.video_players.push(positions);
+</script>
+
 Note that computational resources are distributed
 uniformly across the mesh surface.
 In practice only a fraction of the mesh is visible and
@@ -117,25 +127,7 @@ if only the center blue face were subdivided because the new
 edge-vertices are repositioned away from the edges of the adjacent
 faces.
 
-<!-- FIGURE 4 -->
-{% include dropboxVideo.html 
-  fileid="8mjrvapyjdrury7/reposition.mp4"
-  caption="Figure 4: Catmull-Clark vertex position calculations."
-%}
-<script>
-positions = new DropboxVideo(fileid="8mjrvapyjdrury7/reposition.mp4", start=0, width=410, pos="left");
-video_players.video_players.push(positions);
-</script>
 
-<!-- FIGURE 5 -->
-{% include dropboxVideo.html 
-  fileid="rdx4jn6f3st1ec7/cracking.mp4"
-  caption="Figure 5: Cracks."
-%}
-<script>
-cracks = new DropboxVideo(fileid="rdx4jn6f3st1ec7/cracking.mp4", start=0, width=410, pos="left");
-video_players.video_players.push(cracks);
-</script>
 
 The limit surface of any adaptive scheme should be the same as
 the uniform scheme, otherwise it would be difficult to call
@@ -144,6 +136,16 @@ the original mesh a *control mesh*, as is customary.
 My application is centered around the implementation of an
 adaptive Catmull-Clark subdivision scheme presented in [(Yong and Cheng 2005)].
 It addresses the above mentioned shortcomings.
+
+<!-- FIGURE 5 -->
+{% include dropboxVideo.html 
+  fileid="rdx4jn6f3st1ec7/cracking.mp4"
+  caption="Figure 5: Cracks."
+%}
+<script>
+cracks = new DropboxVideo(fileid="rdx4jn6f3st1ec7/cracking.mp4", start=0, width=410, pos="center");
+video_players.video_players.push(cracks);
+</script>
 
 
 # Related Work
@@ -319,11 +321,6 @@ Where the overline indicates vertices after subdivision.
 An example of this function being applied to all vertices
 after a face split is in Figure 8.
 
-In the case of a face with exactly one positive vertex label,
-the same splitting, repositioning, and label calculations are performed
-except $$\overline{v}_6$$ and $$\overline{v}_7$$ are never explicitly created and
-$$v_3$$ is not re-positioned in the case of $$v_1$$ having the positive vertex label (as 
-in Figure 9).
 
 <!-- FIGURE 8 -->
 {% include dropboxVideo.html 
@@ -331,9 +328,15 @@ in Figure 9).
   caption="Figure 8: An example of new vertex label assignment."
 %}
 <script>
-new_labels = new DropboxVideo(fileid="3h1ukxrow14ofp7/new_labels.mp4", start=0, width=410, pos="left");
+new_labels = new DropboxVideo(fileid="3h1ukxrow14ofp7/new_labels.mp4", start=0, width=410, pos="center");
 video_players.video_players.push(new_labels);
 </script>
+
+In the case of a face with exactly one positive vertex label,
+the same splitting, repositioning, and label calculations are performed
+except $$\overline{v}_6$$ and $$\overline{v}_7$$ are never explicitly created and
+$$v_3$$ is not re-positioned in the case of $$v_1$$ having the positive vertex label (as 
+in Figure 9).
 
 <!-- FIGURE 9 -->
 {% include dropboxVideo.html 
@@ -342,7 +345,7 @@ video_players.video_players.push(new_labels);
 vertex has a positive label."
 %}
 <script>
-y_element = new DropboxVideo(fileid="eur6zdb9s3kv36b/y_element.mp4", start=0, width=410, pos="left");
+y_element = new DropboxVideo(fileid="eur6zdb9s3kv36b/y_element.mp4", start=0, width=410, pos="center");
 video_players.video_players.push(y_element);
 </script>
 
@@ -412,7 +415,7 @@ The mesh density (and smoothness) is clearly non-uniform.
   caption="Figure 10: A cube with only one side painted and subdivided."
 %}
 <script>
-cube = new DropboxVideo(fileid="nc1d6fcbmxxtbms/cube_face.mp4", start=0, width=820, pos="center");
+cube = new DropboxVideo(fileid="nc1d6fcbmxxtbms/cube_face.mp4", start=0, width=720, pos="center");
 video_players.video_players.push(cube);
 </script>
 
@@ -423,7 +426,7 @@ video_players.video_players.push(cube);
 faces visible from the viewing perspective."
 %}
 <script>
-bunny = new DropboxVideo(fileid="zhs3vwnigws27ft/bunny_visible.mp4", start=0, width=820, pos="center");
+bunny = new DropboxVideo(fileid="zhs3vwnigws27ft/bunny_visible.mp4", start=0, width=720, pos="center");
 video_players.video_players.push(bunny);
 </script>
 
@@ -433,7 +436,7 @@ video_players.video_players.push(bunny);
   caption="Figure 12: A car mesh with high curvature regions targeted for subdivision."
 %}
 <script>
-car = new DropboxVideo(fileid="jcyknxyknnfp6va/car_curvature.mp4", start=0, width=820, pos="center");
+car = new DropboxVideo(fileid="jcyknxyknnfp6va/car_curvature.mp4", start=0, width=720, pos="center");
 video_players.video_players.push(car);
 </script>
 
