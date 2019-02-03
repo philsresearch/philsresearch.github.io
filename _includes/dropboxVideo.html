@@ -1,12 +1,12 @@
 <div style="
-	float: left;
+  float: left;
     color: #666666;
-	max-width: 10000px;
+  max-width: 10000px;
     text-align: center;
     display: block;
     margin: 5px 20px 20px;
     font-size: 1.35rem;
-		" id = "surround{{include.fileid}}">
+    " id = "surround{{include.fileid}}">
  <div style = " 
  position:relative;
   top: 0px;
@@ -17,11 +17,11 @@ width: 5px;
 border-radius:5px;
   background-color: rgba(0,0,0,0.0);
   " id="time{{include.fileid}}"></div>
-		<!-- Video -->
+    <!-- Video -->
     <div>
-	<video style="border-bottom: 1px solid rgba(0,0,0,0.0);" id="video{{include.fileid}}" tabindex="0" disableRemotePlayback autobuffer preload>
-		<source type="video/mp4" src="https://dl.dropboxusercontent.com/s/{{ include.fileid }}"></source>
-	</video>
+  <video style="border-bottom: 1px solid rgba(0,0,0,0.0);" id="video{{include.fileid}}" tabindex="0" disableRemotePlayback autobuffer preload>
+    <source type="video/mp4" src="https://dl.dropboxusercontent.com/s/{{ include.fileid }}"></source>
+  </video>
 </div>
-	{{ include.caption }}
+  {{ include.caption }}
 </div>
