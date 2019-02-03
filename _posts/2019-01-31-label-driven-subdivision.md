@@ -15,7 +15,7 @@ using the application is like, and conclude with shortcomings
 and potential modifications.
 The associated codebase can be found
 [on Github](https://github.com/philliptee/label_driven_subdivision).
-Also note that some figures in the post are **_animations_**.
+Also note that some figures in the post are *animations*.
 Click on them to freeze and and unfreeze. When a figure is not
 frozen, horizonal mouseover movements will scroll through the frames.
 
@@ -127,8 +127,6 @@ if only the center blue face were subdivided because the new
 edge-vertices are repositioned away from the edges of the adjacent
 faces.
 
-
-
 The limit surface of any adaptive scheme should be the same as
 the uniform scheme, otherwise it would be difficult to call
 the original mesh a *control mesh*, as is customary.
@@ -184,7 +182,7 @@ presents a simple example.
 <!-- FIGURE 6 -->
 {% include dropboxVideo.html 
   fileid="2zga70gihq7d05i/labeling.mp4"
-  caption="Figure 6: Setting vertex labels from painted face depths. Vertex <br /> labels are set to the maximum of
+  caption="Figure 6: Setting vertex labels from painted face<br /> depths. Vertex  labels are set to the maximum <br />of
 surrounding face depths."
 %}
 <script>
@@ -207,7 +205,11 @@ from no later than C++11.
 
 Source code is separated as specified in the table below.
 
-TABLE
+Filename | Functionality 
+--- | --- |
+`App.cpp` | Coordinates the creation of other objects to create a coherent application for the user. |
+`Object {.cpp/.h}` |Contains mesh and mesh operations.|
+`LabelSubdivision {.cpp/.h}` |Implements label-driven subdivision and removal of illegal vertices.|
 
 The logical organization is largely inspired by examples in
 [*OpenGL Superbible*](https://github.com/openglsuperbible/sb7code).
@@ -225,7 +227,13 @@ source code, refers to this auxiliary data as *custom attributes*.
 Using OpenMesh I add and remove custom attributes as needed. A
 complete list of custom attributes are in the table below.
 
-TABLE
+Mesh | Faces | Edges | Vertices
+--- | --- | --- | --- |
+**_map<FaceHandle, int>_** face_depths | **_Point_** centroid | **_Point_** mid_pos | **_bool_** v_update|
+**_set\<VertexHandle\>_** positive_label_set | **_VertexHandle_** pos_vert_id |  | **_Point_** new_pos|
+**_bool_** quad_mesh | **_bool_** face_updates | | **_int_** vertex_label|
+| | | **_int_** potential_new_illegal_count|
+| | | **_int_** illegal_valence|
 
 ## Face Depth Assignment
 I used the color picking technique described in our course notes
