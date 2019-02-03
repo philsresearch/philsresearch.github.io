@@ -399,7 +399,7 @@ the highly subdivided region and the rest of the mesh.
 With the click of a button the user can paint an increase
 in face depth on all visible faces. In Figure 12
 I painted all visible faces on the bunny mesh.
-The resulting mesh is clearly dense on one side and not ont the other.
+The resulting mesh is clearly dense on one side and not on the other.
 
 Another good example is depicted in Figure 13 where
 the control mesh on has faces with a high
