@@ -10,7 +10,7 @@ In this post I describe some of the ideas and details that went into the
 subdivision application I have created for my CPSC 689 course project.
 In particular, I provide motivation for an adaptive subdivision scheme,
 highlight where the ideas for implementation came from, 
-outline the important concepts important to my implementation, show images of what
+outline the concepts important to my implementation, show images of what
 using the application is like, and conclude with shortcomings
 and potential modifications.
 The associated codebase can be found
@@ -35,8 +35,8 @@ Most real world objects are smooth. In computer graphics, shading models that
 interpolate mesh face normals can only get you so far in simulating surface smoothness.
 Mesh subdivision addresses
 the issue of reproducing the smoothness of real world objects. 
-A subdivision algorithm takes an input mesh and
-splits faces, moves vertices, returning a modified mesh such that
+A subdivision algorithm takes an input mesh,
+splits faces, moves vertices, and returns a modified mesh such that
 the mesh better approximates a smooth surface version of the original.
 The mesh of a surface in Figure 1 gets progressively smoother after each iteration of
 subdivision.
@@ -86,7 +86,7 @@ Figure 4 visualizes the vertices and associated weights used in
 the new position calculation for the three types of
 new vertices. I use different notation for edge-vertices and
 face-vertices in this figure to better orient the vertex
-that is having it's new position calculated.
+that is having its new position calculated.
 
 The repeated application of this basic Catmull-Clark subdivision
 scheme, and most other schemes, sharply increases the number
@@ -115,13 +115,13 @@ computational cost of unnecessarily subdividing other regions.
 
 Schemes that address this shortcoming are called "adaptive," 
 referring to the idea of subdivision depths being non-uniformly
-adapted to local surface properties, for example, high levels of subdivision on
+adapted to local surface properties; for example, high levels of subdivision on
 regions of high curvature and low levels in flat regions.
 Adaptivity of a subdivision scheme introduces at least two additional requirements
 to be useful. These are the crack-free requirement and the
 consistency of the limit
 surface with the uniform scheme requirement. These become obvious when 
-you analyze naive adaptive subdivision schemes. For example
+you analyze naive adaptive subdivision schemes. For example,
 the surface in Figure 5 would have cracks
 if only the center blue face were subdivided because the new
 edge-vertices are repositioned away from the edges of the adjacent
@@ -168,7 +168,7 @@ Beyond these simple methods of specifying regions of interest,
 [(Isenberg et al. 2003)] provides a exposition of other
 methods as well as a comprehensive categorization.
 
-Yong's scheme borrows from  [(Kobbelt 1996)] in it's use
+Yong's scheme borrows from  [(Kobbelt 1996)] in its use
 of *Y elements* (see Figure 9) to avoid generating any new edge-vertices
 that create cracks in the mesh. Furthermore, there is a control
 mesh preprocessing step that applies a simple vertex 
@@ -192,7 +192,7 @@ video_players.video_players.push(depth2labels);
 
 An explanation of why the limit surface is consistent with the
 uniform scheme is provided in [(Yong and Cheng 2005)]. It amounts to proving
-that any vertex that has it's position updated does so using weights
+that any vertex that has its position updated does so using weights
 consistent with the uniform scheme, and that the vertices associated
 with those weights are valid. By valid I mean they are from
 the correct iteration, one before the current,
@@ -273,8 +273,8 @@ every sub-face.
 
 In describing this preprocessing phase, I use the terminology
 of [(Yong and Cheng 2005)]: a quad face with
-exactly two bordering vertices labeled 0 is called an *illegal face*
-and those bordering vertices labeled 0 are called *illegal vertices*.
+exactly two bordering vertices labelled 0 is called an *illegal face*
+and those bordering vertices labelled 0 are called *illegal vertices*.
 
 The first condition is that every face on the mesh is a quad.
 If that isn't the case, every vertex label gets increased by 1
@@ -287,15 +287,15 @@ according to the remaining positive vertex labels.
 The goal of the processing step is to change vertex labels such that
 there are no illegal vertices. One way to accomplish this is using the greedy
 algorithm presented in [(Yong and Cheng 2005)]. This algorithm takes each 
-illegal vertex, compute auxiliary data, and relabel
+illegal vertex, computes auxiliary data, and relabels
 the *best* illegal vertex (based on auxiliary data) to a 1.
 The process is then repeated with the new set of illegal vertices until
-there is none left.
+there are none left.
 
 This auxiliary data is composed of two values for each illegal vertex:
 the illegal vertex valence (within the connected graph of illegal vertices)
 and the number of illegal vertices that would be introduced
-if that vertex was to be relabeled a 1.
+if that vertex were to be relabelled a 1.
 
 The best illegal vertex is the the most
 connected (highest illegal vertex valence)
@@ -363,7 +363,7 @@ For ease of implementation I generate auxiliary data for
 every vertex, edge, and face then only make
 that distinction by control statements within a unified 
 subdivision algorithm. Pseudocode summarizing that 
-algorithm is Algorithm 1.
+algorithm can be found in Algorithm 1.
 
 <!-- FIGURE SKIP -->
 <img src="https://dl.dropboxusercontent.com/s/ff3hrdff7nf8n92/algorithm.png" 
@@ -371,7 +371,7 @@ width="400" style="float:right;
     margin: 5px 20px 20px;"/>
 
 Each function called within this *subdivide function* performs
-the subdivision computation you would expect from it's name.
+the subdivision computation you would expect from its name.
 In addition, `split_edge()` performs case 2 of the label function
 $$L(\overline{v}_i)$$ and `split_face()` performs case 3 and 4.
 Case 1 is handled within the main loop. Also whenever
@@ -381,10 +381,10 @@ test is accurate.
 
 Finally, `set_update_flags()` sets the  update flag custom
 attribute on every face and their vertices. Here a face is
-marked for update only if at least one of it's vertices has
+marked for update only if at least one of its vertices has
 a positive label. Vertices are marked for update if they
 have a positive label or are one edge away from a positive
-labeled vertex.
+labelled vertex.
 
 # Results
 Using my application is easy. I have a straightforward
@@ -450,8 +450,8 @@ video_players.video_players.push(car);
 
 
 # Conclusion
-Vertex labelling allow for parallelism of many parts of
-the scheme. I have vertices being labeled but do not take advantage
+Vertex labelling allows for parallelism of many parts of
+the scheme. I have vertices being labelled but do not take advantage
 of this in my application.
 
 Experimentally, I found removing illegal vertices using the greedy algorithm
