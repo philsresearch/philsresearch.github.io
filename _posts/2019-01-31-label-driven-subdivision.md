@@ -66,7 +66,7 @@ video_players.video_players.push(mesh_curves);
 <!-- FIGURE 3 -->
 {% include dropboxVideo.html 
   fileid="4zdjl0rrclnkphk/split.mp4"
-  caption="Figure 3: The usual Catmull-Clark face splitting."
+  caption="Figure 3: Catmull-Clark face splitting."
 %}
 <script>
 usual_split = new DropboxVideo(fileid="4zdjl0rrclnkphk/split.mp4", start=0, width=260, pos="left");
