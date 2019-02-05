@@ -15,9 +15,13 @@ using the application is like, and conclude with shortcomings
 and potential modifications.
 The associated codebase can be found
 [on Github](https://github.com/philliptee/label_driven_subdivision).
-Also note that some figures in the post are *animations*.
+Some figures in the post are *animations*.
 Click on them to freeze and and unfreeze. When a figure is not
 frozen, horizonal mouseover movements will scroll through the frames.
+If you don't have desktop scaling you may notice that curves
+in the figures are aliased. If you want to see the figures unaliased
+then zoom in 200% :)
+
 
 # Introduction
 
