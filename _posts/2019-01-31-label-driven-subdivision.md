@@ -96,7 +96,8 @@ that is having its new position calculated.
 
 The repeated application of this basic Catmull-Clark subdivision
 scheme, and most other schemes, sharply increases the number
-of faces.<details>
+of faces.
+<details>
 <summary> 
 <i>More precisely, for Catmull-Clark subdivision: </i> 
 </summary> 
