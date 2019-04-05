@@ -22,7 +22,8 @@ If you don't have desktop scaling you may notice that curves
 in the figures are aliased. If you want to see the figures unaliased
 then zoom in 200% :)
 
-$('#toc').toc({ showEffect: 'slideDown' });
+* Do not remove this line (it will not be displayed)
+{:toc}
 
 # Introduction
 
