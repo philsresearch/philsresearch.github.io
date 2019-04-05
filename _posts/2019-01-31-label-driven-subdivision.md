@@ -96,16 +96,12 @@ that is having its new position calculated.
 
 The repeated application of this basic Catmull-Clark subdivision
 scheme, and most other schemes, sharply increases the number
-of faces.
-More precisely, for Catmull-Clark subdivision:
-<details>
+of faces.<details>
 <summary> 
 <i>More precisely, for Catmull-Clark subdivision: </i> 
 </summary> 
 <p>$$ \text{face_count_final} = \text{face_count_initial} \times 4^{lvl}.$$ </p> 
 </details> 
-
-$$ \text{face_count_final} = \text{face_count_initial} \times 4^{lvl}.$$
 
 <!-- FIGURE 4 -->
 {% include dropboxVideo.html 
