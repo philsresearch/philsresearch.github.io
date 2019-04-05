@@ -100,10 +100,9 @@ of faces.
 More precisely, for Catmull-Clark subdivision:
 <details>
 <summary> 
-<i>Like this? </i> 
-<a href="http://www.ironspider.ca/format_text/fontstyles.htm"> Useful Source</a> 
+<i>More precisely, for Catmull-Clark subdivision: </i> 
 </summary> 
-<p>It's because the details block is html5. If you want to modify it your best bet is using html5. </p> 
+<p>$$ \text{face_count_final} = \text{face_count_initial} \times 4^{lvl}.$$ </p> 
 </details> 
 
 $$ \text{face_count_final} = \text{face_count_initial} \times 4^{lvl}.$$
