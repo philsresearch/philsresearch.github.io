@@ -22,6 +22,8 @@ If you don't have desktop scaling you may notice that curves
 in the figures are aliased. If you want to see the figures unaliased
 then zoom in 200% :)
 
+* Do not remove this line (it will not be displayed)
+{:toc}
 
 # Introduction
 
@@ -95,9 +97,12 @@ that is having its new position calculated.
 The repeated application of this basic Catmull-Clark subdivision
 scheme, and most other schemes, sharply increases the number
 of faces.
-More precisely, for Catmull-Clark subdivision:
-
-$$ \text{face_count_final} = \text{face_count_initial} \times 4^{lvl}.$$
+<details>
+<summary> 
+<i>More precisely, for Catmull-Clark subdivision: </i> 
+</summary> 
+<p>$$ \text{face_count_final} = \text{face_count_initial} \times 4^{lvl}.$$ </p> 
+</details> 
 
 <!-- FIGURE 4 -->
 {% include dropboxVideo.html 
