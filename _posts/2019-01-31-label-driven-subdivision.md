@@ -9,7 +9,7 @@ author: Phil
 In this post I describe some of the ideas and details that went into the
 subdivision application I have created for my CPSC 689 course project.
 In particular, I provide motivation for an adaptive subdivision scheme,
-highlight where the ideas for implementation came from, 
+highlight where the ideas for implementation came from,
 outline the concepts important to my implementation, show images of what
 using the application is like, and conclude with shortcomings
 and potential modifications.
@@ -22,15 +22,12 @@ If you don't have desktop scaling you may notice that curves
 in the figures are aliased. If you want to see the figures unaliased
 then zoom in 200% :)
 
-* Do not remove this line (it will not be displayed)
-{:toc}
-
 # Introduction
 
 <!-- FIGURE 1 -->
-{% include dropboxVideo.html 
+{% include dropboxVideo.html
   fileid="7657o4zyx8qarl8/smooth_surface.mp4"
-  caption="Figure 1: Smoothing a mesh via three <br /> iterations of Catmull-Clark subdivision." 
+  caption="Figure 1: Smoothing a mesh via three <br /> iterations of Catmull-Clark subdivision."
 %}
 <script>
 smooth = new DropboxVideo(fileid="7657o4zyx8qarl8/smooth_surface.mp4", start=0, width=300, pos="right");
@@ -40,7 +37,7 @@ video_players.video_players.push(smooth);
 Most real world objects are smooth. In computer graphics, shading models that
 interpolate mesh face normals can only get you so far in simulating surface smoothness.
 Mesh subdivision addresses
-the issue of reproducing the smoothness of real world objects. 
+the issue of reproducing the smoothness of real world objects.
 A subdivision algorithm takes an input mesh,
 splits faces, moves vertices, and returns a modified mesh such that
 the mesh better approximates a smooth surface version of the original.
@@ -50,18 +47,18 @@ subdivision.
 While the subdivision of tensor product surfaces
 can use the algorithms of B-spline curves, it
 does not suffice for subdividing meshes with arbitrary topology,
-i.e., polygon meshes that cannot be completely decomposed 
+i.e., polygon meshes that cannot be completely decomposed
 into u-curves and v-curves.
 The surface on the left of Figure 2 is a tensor product surface with
 visible u-curves and v-curves. On the right, the mesh does
 not have this kind of regular structure.
 
 <!-- FIGURE 2 -->
-{% include dropboxVideo.html 
+{% include dropboxVideo.html
   fileid="oqsnkw9hg6f8ein/mesh_curves.mp4"
   caption="Figure 2: The tensor-product surface on the left  
   is composed of only u-curves and v-curves. The pig head <br />
-  on the right is a different beast; u-curves and v-curves would disappear into irregular vertices." 
+  on the right is a different beast; u-curves and v-curves would disappear into irregular vertices."
 %}
 <script>
 mesh_curves = new DropboxVideo(fileid="oqsnkw9hg6f8ein/mesh_curves.mp4", start=3, width=540, pos="center");
@@ -70,7 +67,7 @@ video_players.video_players.push(mesh_curves);
 
 
 <!-- FIGURE 3 -->
-{% include dropboxVideo.html 
+{% include dropboxVideo.html
   fileid="4zdjl0rrclnkphk/split.mp4"
   caption="Figure 3: Catmull-Clark face splitting."
 %}
@@ -98,14 +95,14 @@ The repeated application of this basic Catmull-Clark subdivision
 scheme, and most other schemes, sharply increases the number
 of faces.
 <details>
-<summary> 
-<i>More precisely, for Catmull-Clark subdivision: </i> 
+<summary>
+<i>More precisely, for Catmull-Clark subdivision: </i>
 </summary> 
-<p>$$ \text{face_count_final} = \text{face_count_initial} \times 4^{lvl}.$$ </p> 
-</details> 
+<p>$$ \text{face_count_final} = \text{face_count_initial} \times 4^{lvl}.$$ </p>
+</details>
 
 <!-- FIGURE 4 -->
-{% include dropboxVideo.html 
+{% include dropboxVideo.html
   fileid="8mjrvapyjdrury7/reposition.mp4"
   caption="Figure 4: Catmull-Clark vertex position calculations."
 %}
@@ -122,14 +119,14 @@ This means that achieving the desired amount of smoothness
 in regions of interest can require paying the steep
 computational cost of unnecessarily subdividing other regions.
 
-Schemes that address this shortcoming are called "adaptive," 
+Schemes that address this shortcoming are called "adaptive,"
 referring to the idea of subdivision depths being non-uniformly
 adapted to local surface properties; for example, high levels of subdivision on
 regions of high curvature and low levels in flat regions.
 Adaptivity of a subdivision scheme introduces at least two additional requirements
 to be useful. These are the crack-free requirement and the
 consistency of the limit
-surface with the uniform scheme requirement. These become obvious when 
+surface with the uniform scheme requirement. These become obvious when
 you analyze naive adaptive subdivision schemes. For example,
 the surface in Figure 5 would have cracks
 if only the center blue face were subdivided because the new
@@ -145,7 +142,7 @@ adaptive Catmull-Clark subdivision scheme presented in [(Yong and Cheng 2005)].
 It addresses the above mentioned shortcomings.
 
 <!-- FIGURE 5 -->
-{% include dropboxVideo.html 
+{% include dropboxVideo.html
   fileid="rdx4jn6f3st1ec7/cracking.mp4"
   caption="Figure 5: Cracks."
 %}
@@ -180,7 +177,7 @@ methods as well as a comprehensive categorization.
 Yong's scheme borrows from  [(Kobbelt 1996)] in its use
 of *Y elements* (see Figure 9) to avoid generating any new edge-vertices
 that create cracks in the mesh. Furthermore, there is a control
-mesh preprocessing step that applies a simple vertex 
+mesh preprocessing step that applies a simple vertex
 labelling function to every vertex:
 
 $$L(v) = \max(d_f ~|~ f \text{ is a bordering face})$$
@@ -189,7 +186,7 @@ Where $$d_f$$ is the painted face depth. Figure 6
 presents a simple example.
 
 <!-- FIGURE 6 -->
-{% include dropboxVideo.html 
+{% include dropboxVideo.html
   fileid="2zga70gihq7d05i/labeling.mp4"
   caption="Figure 6: Setting vertex labels from painted face<br /> depths. Vertex  labels are set to the maximum <br />of
 surrounding face depths."
@@ -214,7 +211,7 @@ from no later than C++11.
 
 Source code is separated as specified in the table below.
 
-Filename | Functionality 
+Filename | Functionality
 --- | --- |
 `App.cpp` | Coordinates the creation of other objects to create a coherent application for the user. |
 `Object {.cpp/.h}` |Contains mesh and mesh operations.|
@@ -264,7 +261,7 @@ with an adjacent face is depicted in Figure 7.
 <!-- FIGURE 7 -->
 <div style="float: left;
     margin: 5px 20px 20px;">
-<img src="https://dl.dropboxusercontent.com/s/t25mcuyni9es172/dihedral.png" 
+<img src="https://dl.dropboxusercontent.com/s/t25mcuyni9es172/dihedral.png"
 alt="Figure 7: One of the four dihedral angles associated with the
 top face is labeled as θ."
 width="500"/>
@@ -272,7 +269,7 @@ width="500"/>
 
 ## Removing Illegal Vertices
 Crack free output meshes can be guaranteed by subdivision
-of a quad face in two particular cases described in 
+of a quad face in two particular cases described in
 The next section. By preprocessing a mesh to ensure all faces are quads
 and have 0, 1, 3, or 4 vertices with a positive vertex label,
 we can guarantee every face falls into one of the two
@@ -295,7 +292,7 @@ according to the remaining positive vertex labels.
 
 The goal of the processing step is to change vertex labels such that
 there are no illegal vertices. One way to accomplish this is using the greedy
-algorithm presented in [(Yong and Cheng 2005)]. This algorithm takes each 
+algorithm presented in [(Yong and Cheng 2005)]. This algorithm takes each
 illegal vertex, computes auxiliary data, and relabels
 the *best* illegal vertex (based on auxiliary data) to a 1.
 The process is then repeated with the new set of illegal vertices until
@@ -327,20 +324,20 @@ described in Figure 3 and 4.
 In addition, each vertex gets
 the follow vertex labelling function applied:
 
-$$L(\overline{v}_i) = 
+$$L(\overline{v}_i) =
 \begin{cases} \max(0, L(v_i)-1), & \text{ if } i= 1,2,3,4, \\
 \min(L(\overline{v}_{i-4}), L(\overline{v}_{i-4})), & \text{ if } i= 5,6,7,8,\\
 0, & \text{ if } i=9 \text{ and } L(\overline{v}_5)=L(\overline{v}_6)=L(\overline{v}_5)=L(\overline{v}_5)=0, \\
 \min(L(\overline{v}) ~|~ \overline{v} \in \{ \overline{v}_5, \overline{v}_6, \overline{v}_7, \overline{v}_8\}\setminus \{0\} ), & \text{ otherwise. }
             \end{cases}$$
 
-Where the overline indicates vertices after subdivision. 
+Where the overline indicates vertices after subdivision.
 An example of this function being applied to all vertices
 after a face split is in Figure 8.
 
 
 <!-- FIGURE 8 -->
-{% include dropboxVideo.html 
+{% include dropboxVideo.html
   fileid="3h1ukxrow14ofp7/new_labels.mp4"
   caption="Figure 8: An example of new vertex label assignment."
 %}
@@ -352,11 +349,11 @@ video_players.video_players.push(new_labels);
 In the case of a face with exactly one positive vertex label,
 the same splitting, repositioning, and label calculations are performed
 except $$\overline{v}_6$$ and $$\overline{v}_7$$ are never explicitly created and
-$$v_3$$ is not re-positioned in the case of $$v_1$$ having the positive vertex label (as 
+$$v_3$$ is not re-positioned in the case of $$v_1$$ having the positive vertex label (as
 in Figure 9).
 
 <!-- FIGURE 9 -->
-{% include dropboxVideo.html 
+{% include dropboxVideo.html
   fileid="eur6zdb9s3kv36b/y_element.mp4"
   caption="Figure 9: The case where only one
 vertex has a positive label."
@@ -367,15 +364,15 @@ video_players.video_players.push(y_element);
 </script>
 
 For ease of understanding it is useful to make the distinction
-between these cases explicit. 
+between these cases explicit.
 For ease of implementation I generate auxiliary data for
 every vertex, edge, and face then only make
-that distinction by control statements within a unified 
-subdivision algorithm. Pseudocode summarizing that 
+that distinction by control statements within a unified
+subdivision algorithm. Pseudocode summarizing that
 algorithm can be found in Algorithm 1.
 
 <!-- FIGURE SKIP -->
-<img src="https://dl.dropboxusercontent.com/s/ff3hrdff7nf8n92/algorithm.png" 
+<img src="https://dl.dropboxusercontent.com/s/ff3hrdff7nf8n92/algorithm.png"
 width="400" style="float:right;
     margin: 5px 20px 20px;"/>
 
@@ -427,7 +424,7 @@ maximum dihedral angle painted automatically.
 The mesh density (and smoothness) is clearly non-uniform.
 
 <!-- FIGURE 10 -->
-{% include dropboxVideo.html 
+{% include dropboxVideo.html
   fileid="nc1d6fcbmxxtbms/cube_face.mp4"
   caption="Figure 10: A cube with only one side painted and subdivided."
 %}
@@ -437,7 +434,7 @@ video_players.video_players.push(cube);
 </script>
 
 <!-- FIGURE 11 -->
-{% include dropboxVideo.html 
+{% include dropboxVideo.html
   fileid="zhs3vwnigws27ft/bunny_visible.mp4"
   caption="Figure 11: A bunny mesh with face depths increased only on
 faces visible from the viewing perspective."
@@ -448,7 +445,7 @@ video_players.video_players.push(bunny);
 </script>
 
 <!-- FIGURE 12 -->
-{% include dropboxVideo.html 
+{% include dropboxVideo.html
   fileid="jcyknxyknnfp6va/car_curvature.mp4"
   caption="Figure 12: A car mesh with high curvature regions targeted for subdivision."
 %}
@@ -478,7 +475,7 @@ Limiting the entire process to a single iteration allows
 us to guarantee the limit surface is consistent with
 uniform subdivision. Any further iterations will have a
 different limit surface than the original mesh. This is
-likely not what a user wants. Perhaps there is a 
+likely not what a user wants. Perhaps there is a
 way to keep and reuse auxiliary data such that the
 limit surface remains the same after several complete
 iterations of the whole scheme.
